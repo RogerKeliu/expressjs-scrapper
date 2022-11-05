@@ -10,6 +10,7 @@ async function get(req, res, next) {
 }
 
 async function create(req, res, next) {
+  console.log(req.body)
   try {
     res.json(await programmingLanguages.create(req.body));
   } catch (err) {

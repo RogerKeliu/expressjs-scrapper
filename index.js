@@ -3,6 +3,8 @@ const bodyParser = require('body-parser');
 const app = express();
 const port = process.env.PORT || 3000;
 const programmingLanguagesRouter = require('./src/routes/programmingLanguages.route');
+const instagramRouter = require('./src/routes/instagram.route');
+const idealistaRouter = require('./src/routes/idealista.route');
 
 app.use(bodyParser.json());
 app.use(
@@ -16,6 +18,8 @@ app.get('/', (req, res) => {
 })
 
 app.use('/programming-languages', programmingLanguagesRouter);
+app.use('/instagram', instagramRouter);
+app.use('/idealista', idealistaRouter);
 
 /* Error handler middleware */
 app.use((err, req, res, next) => {
@@ -27,5 +31,6 @@ app.use((err, req, res, next) => {
 });
 
 app.listen(port, '0.0.0.0', () => {
+  console.log(process.env.DB_HOST)
   console.log(`Example app listening at http://localhost:${port}`)
 });
